@@ -3,8 +3,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { QuestionService } from '../../services/question.service';
 import { AnswerService } from '../../services/answer.service';
 
-import { Question } from '../models/question';
-import { Answer } from '../models/answer';
+import { Question } from '../../models/question';
+import { Answer } from '../../models/answer';
 
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material';
