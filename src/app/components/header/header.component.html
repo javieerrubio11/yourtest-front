@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+
+  <div fxFlex fxLayout="row">
+    <button (click)="back()" mat-icon-button matTooltip="Volver hacia atrás">
+      <mat-icon aria-label="Volver hacia atrás">arrow_back</mat-icon>
+    </button>
+    <button routerLink="/" mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <div fxFlex></div>
+  </div>
+
+  <span>Your Test</span>
+
+  <div fxFlex fxLayout="row">
+    <div fxFlex></div>
+    <div class="button-row">
+      <button mat-raised-button color="accent" routerLink="/quizzes">Quizzes</button>
+    </div>
+  </div>
+</mat-toolbar>

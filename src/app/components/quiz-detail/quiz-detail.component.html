@@ -1,0 +1,70 @@
+
+<mat-card class="margin-20">
+
+  <mat-card-title>
+    <div fxLayout="row" fxLayout.xs="column">
+      Listado de Preguntas ({{questions.length}})
+      <div fxFlex></div>
+
+      <button mat-icon-button [disabled]="allExpandState" color="primary" matTooltip="Visualizar todas las preguntas"
+              matTooltipPosition="before" (click)="allExpandState = true">
+        <mat-icon aria-label="Nueva pregunta">expand_more</mat-icon>
+      </button>
+
+      <button mat-icon-button [disabled]="!allExpandState" color="primary" matTooltip="Ocultar todas las preguntas"
+              matTooltipPosition="before" (click)="allExpandState = false">
+        <mat-icon aria-label="Nueva pregunta">expand_less</mat-icon>
+      </button>
+
+      <button mat-icon-button color="primary" matTooltip="Añadir una nueva pregunta" matTooltipPosition="before">
+        <mat-icon aria-label="Nueva pregunta">add</mat-icon>
+      </button>
+    </div>
+  </mat-card-title>
+
+  <mat-divider></mat-divider>
+  <br>
+
+  <mat-card-content>
+
+    <mat-accordion multi="true">
+      <mat-expansion-panel *ngFor="let item of questions; let i = index" (opened)="getAnswers(item)" [expanded]="allExpandState">
+        <mat-expansion-panel-header class="line-divider-header">
+          <mat-panel-title>
+            <p>{{i + 1}} - <b>{{item.name}}</b></p>
+          </mat-panel-title>
+          <mat-panel-description>
+            <p>{{item.owner.firstName}}</p>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-list>
+          <div *ngFor="let answer of item.answers; let j = index;">
+            <mat-list-item>
+              <mat-icon *ngIf="answer.correct" class="green-text">done</mat-icon>
+              <mat-icon *ngIf="!answer.correct">remove</mat-icon>
+              <p> {{answer.name}}</p>
+
+              <div fxFlex></div>
+
+              <button mat-icon-button color="primary" matTooltip="Eliminar respuesta" (click)="deleteAnswer(item, answer)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-list-item>
+            <mat-divider inset *ngIf="j != item.answers.length - 1"></mat-divider>
+          </div>
+        </mat-list>
+
+        <p *ngIf="item.answers && item.answers.length == 0">No hay respuestas en esta pregunta.</p>
+
+        <mat-action-row>
+          <button mat-button color="primary" (click)="openDialog(item)" matTooltip="Añadir una nueva respuesta">
+            <mat-icon aria-label="Nueva respuesta">question_answer</mat-icon>
+            Nueva respuesta
+          </button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card-content>
+
+</mat-card>

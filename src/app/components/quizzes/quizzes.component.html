@@ -1,0 +1,34 @@
+
+<mat-card class="margin-20">
+
+  <mat-card-title>
+    <div fxLayout="row" fxLayout.xs="column">
+      Listado de Encuestas ({{quizzes.length}})
+      <div fxFlex></div>
+      <button mat-icon-button color="primary" matTooltip="Añadir nueva encuesta" matTooltipPosition="before">
+        <mat-icon aria-label="Nueva encuesta">add</mat-icon>
+      </button>
+    </div>
+  </mat-card-title>
+
+  <mat-divider></mat-divider>
+
+  <mat-card-content>
+
+    <mat-list>
+      <div *ngFor="let item of quizzes">
+        <mat-list-item>
+          <span>{{item.name}} - {{item.owner.firstName}}</span>
+
+          <div fxFlex></div>
+
+          <button mat-icon-button color="primary" matTooltip="Visualizar" routerLink="/quiz-detail/{{item.id}}">
+            <mat-icon>visibility</mat-icon>
+          </button>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </div>
+    </mat-list>
+  </mat-card-content>
+
+</mat-card>
