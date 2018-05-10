@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { HttpClient } from '@angular/common/http';
 
-import { Question } from './models/question';
+import { Question } from '../models/question';
 
 @Injectable()
 export class QuestionService {
@@ -18,7 +18,7 @@ export class QuestionService {
     return this.http.get(this.baseUrl + '/all');
   }
 
-  getByQuizId(quizId: Long): Observable<any> {
+  getByQuizId(quizId: number): Observable<any> {
     return this.http.get(this.baseUrl + '/findByQuiz/' + quizId);
   }
 

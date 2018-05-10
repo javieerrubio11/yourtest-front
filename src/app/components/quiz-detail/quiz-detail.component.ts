@@ -4,6 +4,7 @@ import { QuestionService } from '../../services/question.service';
 import { AnswerService } from '../../services/answer.service';
 
 import { Question } from '../../models/question';
+import { Quiz } from '../../models/quiz';
 import { Answer } from '../../models/answer';
 
 import { ActivatedRoute } from '@angular/router';
@@ -92,7 +93,7 @@ export class QuizDetailComponent implements OnInit {
   templateUrl: 'answer-insert-dialog.html',
 })
 export class AnswerInsertDialog implements OnInit {
-  private quiz: Quiz = {};
+  private quiz: Quiz = null;
   answer = {};
 
   constructor(
@@ -123,8 +124,8 @@ export class AnswerInsertDialog implements OnInit {
 
   newAnswer() {
     this.answer = {};
-    this.answer.id = 0;
-    this.answer.question = this.quiz.id;
+    this.answer['id'] = 0;
+    this.answer['question'] = this.quiz.id;
   }
 
   openSnackBar(message: string, action: string) {

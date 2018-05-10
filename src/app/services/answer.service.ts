@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { HttpClient } from '@angular/common/http';
 
-import { Answer } from './models/answer';
+import { Answer } from '../models/answer';
 
 @Injectable()
 export class AnswerService {
@@ -18,7 +18,7 @@ export class AnswerService {
     return this.http.get(this.baseUrl + '/all');
   }
 
-  getByQuestionId(questionId: Long): Observable<any> {
+  getByQuestionId(questionId: number): Observable<any> {
     return this.http.get(this.baseUrl + '/findByQuestion/' + questionId);
   }
 
@@ -26,7 +26,7 @@ export class AnswerService {
     return this.http.post(this.baseUrl + '/insert', answer);
   }
 
-  delete(id: Long): Observable<any> {
+  delete(id: number): Observable<any> {
     return this.http.delete(this.baseUrl + '/' + id);
   }
 

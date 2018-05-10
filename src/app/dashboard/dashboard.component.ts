@@ -10,8 +10,6 @@ import { User } from '../models/user';
 })
 
 export class DashboardComponent implements OnInit {
-  heroes: Hero[] = [];
-
   private usersUrl = 'http://localhost:8080/api/v1/users/all';  // URL to web api
   users: User[] = [];
 
