@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
+import { User } from '../../models/user';
+
 
 @Component({
   selector: 'app-header',
@@ -8,9 +11,14 @@ import { Location } from '@angular/common';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private location: Location) { }
+  activeUser: User = new User();
+
+  constructor(
+    private location: Location,
+    private authService: AuthService) { }
 
   ngOnInit() {
+    this.activeUser = this.authService.activeUser;
   }
 
   back () {

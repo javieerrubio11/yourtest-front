@@ -14,6 +14,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { QuizService } from './services/quiz.service';
 import { QuestionService } from './services/question.service';
 import { AnswerService } from './services/answer.service';
+import { AuthService } from './services/auth.service';
 
 // Components
 import { AppComponent } from './app.component';
@@ -22,6 +23,11 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { QuizzesComponent } from './components/quizzes/quizzes.component';
 import { QuizDetailComponent, AnswerInsertDialog } from './components/quiz-detail/quiz-detail.component';
+import { LoginComponent } from './components/login/login.component';
+
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { Interceptor } from "./core/app.interceptor";
+import { TokenStorage } from "./core/token.storage";
 
 @NgModule({
   declarations: [
@@ -32,6 +38,7 @@ import { QuizDetailComponent, AnswerInsertDialog } from './components/quiz-detai
     HeaderComponent,
     FooterComponent,
     AnswerInsertDialog,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +53,13 @@ import { QuizDetailComponent, AnswerInsertDialog } from './components/quiz-detai
     QuizService,
     QuestionService,
     AnswerService,
+    AuthService,
+    TokenStorage,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: Interceptor,
+      multi : true
+    }
   ],
   entryComponents: [
     AnswerInsertDialog

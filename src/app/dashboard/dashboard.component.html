@@ -1,4 +1,24 @@
-<h3>Dashboard Panel</h3>
+<mat-card class="margin-20">
 
-<button (click)="testApi()">API</button>
-<button (click)="testApi2()">API 2</button>
+  <mat-card-title>
+    <div fxLayout="row" fxLayout.xs="column">
+      Dashboard Panel
+
+      <div fxFlex></div>
+      <!--<button mat-icon-button color="primary" matTooltip="Añadir nueva encuesta" matTooltipPosition="before">-->
+        <!--<mat-icon aria-label="Nueva encuesta">add</mat-icon>-->
+      <!--</button>-->
+    </div>
+  </mat-card-title>
+
+  <mat-divider></mat-divider>
+
+  <mat-card-content>
+
+    <br>
+
+    <button mat-raised-button color="accent" routerLink="/quizzes">Quizzes</button>
+
+  </mat-card-content>
+
+</mat-card>
