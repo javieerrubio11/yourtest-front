@@ -17,8 +17,13 @@ export class AuthService {
   }
 
   updateActiveUser(user): void {
-    this.activeUser = user;
-//    Object.assign(user, this.activeUser);
+    Object.assign(this.activeUser, user);
+  }
+
+  clearActiveUser(): void {
+    Object.keys(this.activeUser).forEach(key => {
+      delete this.activeUser[key];
+    });
   }
 
 }

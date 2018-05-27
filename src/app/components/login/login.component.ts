@@ -24,12 +24,16 @@ export class LoginComponent {
   login(): void {
     this.authService.attemptAuth(this.username, this.password).subscribe(
       data => {
-        console.log(data)
-        this.token.saveToken(data.token);
+        this.token.saveToken(data.token, data.user);
         this.authService.updateActiveUser(data.user);
         this.router.navigate(['']);
       }
     );
+  }
+
+  reset(): void {
+    this.username = null;
+    this.password = null;
   }
 
 }

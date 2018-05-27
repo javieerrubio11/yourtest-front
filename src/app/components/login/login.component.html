@@ -1,25 +1,39 @@
-<mat-card class="example-card">
-  <mat-card-header>
-    <mat-card-title>Login</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <form class="example-form">
-      <table class="example-full-width" cellspacing="0">
-        <tr>
-          <td>
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
-            </mat-form-field>
-          </td>
-        </tr>
-        <tr>
-          <td><mat-form-field class="example-full-width">
+
+<div fxLayout="row" fxLayout.xs="column">
+  <div fxFlex="30" fxFlex.sm="20"></div>
+
+  <div fxFlex="40" fxFlex.sm="60" fxFlex.xs="100">
+    <mat-card class="margin-20">
+      <mat-card-title>
+        <div fxLayout="row" fxLayout.xs="column">
+          Login
+        </div>
+      </mat-card-title>
+
+      <mat-divider></mat-divider>
+
+      <mat-card-content>
+        <br>
+
+        <form fxLayout="column">
+          <mat-form-field fxFlex="100">
+            <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+          </mat-form-field>
+          <mat-form-field fxFlex="100">
             <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
-          </mat-form-field></td>
-        </tr></table>
-    </form>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button (click)="login()" color="primary">Login</button>
-  </mat-card-actions>
-</mat-card>
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <div fxLayout="row" fxLayout.xs="column">
+          <button mat-button (click)="reset()" color="primary">Reset</button>
+          <div fxFlex></div>
+          <button mat-raised-button (click)="login()" color="primary">Login</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div fxFlex="30" fxFlex.sm="20"></div>
+</div>

@@ -15,8 +15,11 @@
   <div fxFlex fxLayout="row">
     <div fxFlex></div>
     <div class="button-row">
-      <button mat-button color="white" routerLink="/login">Login</button>
       {{activeUser.firstName}}
+      <button mat-raised-button color="accent" *ngIf="!activeUser.id" routerLink="/login">Login</button>
+      <button (click)="signOut()" mat-icon-button *ngIf="activeUser.id" matTooltip="Exit to App">
+        <mat-icon aria-label="Exit to App">exit_to_app</mat-icon>
+      </button>
     </div>
   </div>
 </mat-toolbar>

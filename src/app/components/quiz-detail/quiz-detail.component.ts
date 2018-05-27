@@ -37,7 +37,6 @@ export class QuizDetailComponent implements OnInit {
 
   getQuestions(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    console.log(id);
     this.questionService.getByQuizId(id)
       .subscribe(data => {
         this.questions = data;
@@ -110,10 +109,8 @@ export class AnswerInsertDialog implements OnInit {
   }
 
   save() {
-    console.log(this.answer);
     this.answerService.insert(this.answer)
       .subscribe(data => {
-        console.log(data);
         this.newAnswer();
         this.openSnackBar('Answer saved successfully', 'Close')
       },
