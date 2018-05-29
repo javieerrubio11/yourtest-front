@@ -18,8 +18,10 @@ export class QuizService {
   }
 
   getOne(id: number): Observable<any> {
-//    this.messageService.add(`QuizService: fetched Quiz id=${id}`);
-//    return of(QuizES.find(Quiz => Quiz.id === id));
-    return of([])
+    return this.http.get(this.baseUrl + '/get/' + id);
+  }
+
+  insert(obj: any): Observable<any> {
+    return this.http.post(this.baseUrl + '/insert', obj);
   }
 }

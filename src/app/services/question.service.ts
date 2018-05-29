@@ -22,4 +22,8 @@ export class QuestionService {
     return this.http.get(this.baseUrl + '/findByQuiz/' + quizId);
   }
 
+  insert(obj: any): Observable<any> {
+    return this.http.post(this.baseUrl + '/insert', obj);
+  }
+
 }

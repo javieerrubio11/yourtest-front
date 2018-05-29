@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 
+import { QuizService } from '../../services/quiz.service';
 import { QuestionService } from '../../services/question.service';
 import { AnswerService } from '../../services/answer.service';
 
@@ -9,10 +10,11 @@ import { Answer } from '../../models/answer';
 
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material';
-
 import { FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { MatSnackBar } from '@angular/material';
+
+import { QuestionInsertDialog } from '../question-detail/question-detail.component';
 
 
 @Component({
@@ -23,9 +25,11 @@ import { MatSnackBar } from '@angular/material';
 export class QuizDetailComponent implements OnInit {
   questions: Question[] = [];
   allExpandState = false;
+  quiz: Quiz = null;
 
   constructor(
     private route: ActivatedRoute,
+    private quizService: QuizService,
     private questionService: QuestionService,
     private answerService: AnswerService,
     private dialog: MatDialog,
@@ -33,6 +37,7 @@ export class QuizDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getQuestions();
+    this.getQuiz();
   }
 
   getQuestions(): void {
@@ -40,6 +45,17 @@ export class QuizDetailComponent implements OnInit {
     this.questionService.getByQuizId(id)
       .subscribe(data => {
         this.questions = data;
+      },
+      error => {
+        console.log(<any>error);
+      });
+  }
+
+  getQuiz(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.quizService.getOne(id)
+      .subscribe(data => {
+        this.quiz = data;
       },
       error => {
         console.log(<any>error);
@@ -67,14 +83,23 @@ export class QuizDetailComponent implements OnInit {
       });
   }
 
-  openDialog(quiz) {
+  openDialog(question) {
     const dialogRef = this.dialog.open(AnswerInsertDialog, {
-      data: { quiz: quiz },
+      data: { question: question },
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('Dialog result:', result);
-      this.getAnswers(quiz);
+      this.getAnswers(question);
+    });
+  }
+
+  openDialogQuestion() {
+    const dialogRef = this.dialog.open(QuestionInsertDialog, {
+      data: { quiz: this.quiz },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getQuestions();
     });
   }
 
@@ -92,15 +117,15 @@ export class QuizDetailComponent implements OnInit {
   templateUrl: 'answer-insert-dialog.html',
 })
 export class AnswerInsertDialog implements OnInit {
-  private quiz: Quiz = null;
-  answer = {};
+  question: Question = null;
+  answer = null;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private answerService: AnswerService,
     public snackBar: MatSnackBar) {
 
-    this.quiz = data.quiz;
+    this.question = data.question;
     this.newAnswer();
   }
 
@@ -121,8 +146,8 @@ export class AnswerInsertDialog implements OnInit {
 
   newAnswer() {
     this.answer = {};
-    this.answer['id'] = 0;
-    this.answer['question'] = this.quiz.id;
+    this.answer["id"] = 0;
+    this.answer["question"] = this.question.id;
   }
 
   openSnackBar(message: string, action: string) {

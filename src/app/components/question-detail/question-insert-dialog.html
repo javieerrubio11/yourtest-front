@@ -1,14 +1,11 @@
 <h2 mat-dialog-title>{{quiz.name}}</h2>
 
-<mat-dialog-content>
+<mat-dialog-content class="mw-400">
   <form fxLayout="row wrap">
-    <mat-form-field fxFlex="100">
-      <input matInput name="name" [(ngModel)]="answer.name" placeholder="Respuesta" required>
-    </mat-form-field>
 
-    <div fxFlex="100">
-      <mat-checkbox name="correct" [(ngModel)]="answer.correct">Respuesta correcta</mat-checkbox>
-    </div>
+    <mat-form-field fxFlex="100">
+      <input matInput name="name" [(ngModel)]="question.name" placeholder="Question" required>
+    </mat-form-field>
 
     <br><br><br>
   </form>
@@ -17,5 +14,5 @@
 <mat-dialog-actions>
   <button mat-button mat-dialog-close>Cancel</button>
   <div fxFlex></div>
-  <button mat-raised-button color="primary" (click)="save()" [disabled]="answer.name == null || answer.name == ''">Save</button>
+  <button mat-raised-button color="primary" (click)="save()" [disabled]="question.name == null || question.name == ''">Save</button>
 </mat-dialog-actions>

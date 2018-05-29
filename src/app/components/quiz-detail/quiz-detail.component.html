@@ -16,7 +16,8 @@
         <mat-icon aria-label="Nueva pregunta">expand_less</mat-icon>
       </button>
 
-      <button mat-icon-button color="primary" matTooltip="Añadir una nueva pregunta" matTooltipPosition="before">
+      <button mat-icon-button color="primary" matTooltip="Añadir una nueva pregunta" matTooltipPosition="before"
+              (click)="openDialogQuestion()">
         <mat-icon aria-label="Nueva pregunta">add</mat-icon>
       </button>
     </div>
@@ -58,9 +59,9 @@
         <p *ngIf="item.answers && item.answers.length == 0">No hay respuestas en esta pregunta.</p>
 
         <mat-action-row>
-          <button mat-button color="primary" (click)="openDialog(item)" matTooltip="Añadir una nueva respuesta">
-            <mat-icon aria-label="Nueva respuesta">question_answer</mat-icon>
-            Nueva respuesta
+          <button mat-button color="primary" (click)="openDialog(item)" matTooltip="Insert new answer">
+            <mat-icon aria-label="Insert new answer">question_answer</mat-icon>
+            New answer
           </button>
         </mat-action-row>
       </mat-expansion-panel>

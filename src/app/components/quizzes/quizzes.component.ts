@@ -20,7 +20,6 @@ export class QuizzesComponent implements OnInit {
   getQuizzes(): void {
     this.quizService.getAll()
       .subscribe(data => {
-        console.log(data);
         this.quizzes = data;
       },
       error => {
