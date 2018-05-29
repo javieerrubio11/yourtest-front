@@ -83,6 +83,17 @@ export class QuizDetailComponent implements OnInit {
       });
   }
 
+  deleteQuestion(id): void {
+    this.questionService.delete(id)
+      .subscribe(data => {
+        this.questions = data;
+        this.openSnackBar('Question removed successfully', 'Close')
+      },
+      error => {
+        console.log(<any>error);
+      });
+  }
+
   openDialog(question) {
     const dialogRef = this.dialog.open(AnswerInsertDialog, {
       data: { question: question },
