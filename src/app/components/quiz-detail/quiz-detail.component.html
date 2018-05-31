@@ -6,19 +6,19 @@
       {{quiz.name}} ({{questions.length}})
       <div fxFlex></div>
 
-      <button mat-icon-button [disabled]="allExpandState" color="primary" matTooltip="Visualizar todas las preguntas"
+      <button mat-icon-button [disabled]="allExpandState" color="primary" matTooltip="Expand all"
               matTooltipPosition="before" (click)="allExpandState = true">
-        <mat-icon aria-label="Nueva pregunta">expand_more</mat-icon>
+        <mat-icon aria-label="Expand all">expand_more</mat-icon>
       </button>
 
-      <button mat-icon-button [disabled]="!allExpandState" color="primary" matTooltip="Ocultar todas las preguntas"
+      <button mat-icon-button [disabled]="!allExpandState" color="primary" matTooltip="Contract all"
               matTooltipPosition="before" (click)="allExpandState = false">
-        <mat-icon aria-label="Nueva pregunta">expand_less</mat-icon>
+        <mat-icon aria-label="Contract all">expand_less</mat-icon>
       </button>
 
-      <button mat-icon-button color="primary" matTooltip="Añadir una nueva pregunta" matTooltipPosition="before"
+      <button mat-icon-button mat-raised-button color="primary" matTooltip="Añadir una nueva pregunta" matTooltipPosition="before"
               (click)="openDialogQuestion()">
-        <mat-icon aria-label="Nueva pregunta">add</mat-icon>
+        <mat-icon aria-label="New question">add</mat-icon>
       </button>
     </div>
   </mat-card-title>
@@ -34,9 +34,9 @@
           <mat-panel-title>
             <p>{{i + 1}} - <b>{{item.name}}</b></p>
           </mat-panel-title>
-          <mat-panel-description>
-            <p>{{item.owner.firstName}}</p>
-          </mat-panel-description>
+          <!--<mat-panel-description>-->
+            <!--<p>{{item.owner.firstName}}</p>-->
+          <!--</mat-panel-description>-->
         </mat-expansion-panel-header>
 
         <mat-list>
@@ -73,6 +73,18 @@
         </mat-action-row>
       </mat-expansion-panel>
     </mat-accordion>
+
+    <div fxLayout="row" *ngIf="questions.length < 1">
+      <div fxFlex></div>
+
+      <button mat-raised-button color="primary" (click)="openDialogQuestion()" matTooltip="Insert new question">
+        <mat-icon aria-label="Insert new question">add</mat-icon>
+        New Question
+      </button>
+
+      <div fxFlex></div>
+    </div>
+
   </mat-card-content>
 
 </mat-card>

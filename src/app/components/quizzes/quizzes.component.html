@@ -4,8 +4,10 @@
   <mat-card-title>
     <div fxLayout="row">
       List of Quizzes ({{quizzes.length}})
+
       <div fxFlex></div>
-      <button mat-icon-button color="primary" (click)="openDialogQuiz()" matTooltip="New quiz" matTooltipPosition="before">
+
+      <button mat-icon-button mat-raised-button color="primary" (click)="openDialogQuiz()" matTooltip="New quiz" matTooltipPosition="before">
         <mat-icon aria-label="New quiz">add</mat-icon>
       </button>
     </div>
