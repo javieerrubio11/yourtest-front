@@ -76,7 +76,7 @@ export class QuizDetailComponent implements OnInit {
     this.answerService.delete(answer.id)
       .subscribe(data => {
         question.answers = data;
-        this.openSnackBar('Answer removed successfully', 'Close')
+        this.openSnackBar('Answer removed successfully', 'Close');
       },
       error => {
         console.log(<any>error);
@@ -87,7 +87,7 @@ export class QuizDetailComponent implements OnInit {
     this.questionService.delete(id)
       .subscribe(data => {
         this.questions = data;
-        this.openSnackBar('Question removed successfully', 'Close')
+        this.openSnackBar('Question removed successfully', 'Close');
       },
       error => {
         console.log(<any>error);
@@ -116,7 +116,7 @@ export class QuizDetailComponent implements OnInit {
 
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
-      duration: 3000,
+      duration: 4000,
       panelClass: 'green',
     });
   }
@@ -148,7 +148,7 @@ export class AnswerInsertDialog implements OnInit {
     this.answerService.insert(this.answer)
       .subscribe(data => {
         this.newAnswer();
-        this.openSnackBar('Answer saved successfully', 'Close')
+        this.openSnackBar('Answer saved successfully', 'Close');
       },
       error => {
         console.log(<any>error);
@@ -163,7 +163,7 @@ export class AnswerInsertDialog implements OnInit {
 
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
-      duration: 3000,
+      duration: 4000,
       panelClass: 'green',
     });
   }

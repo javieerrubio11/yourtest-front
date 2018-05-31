@@ -22,8 +22,12 @@
 
           <div fxFlex></div>
 
-          <button mat-icon-button color="primary" matTooltip="Visualizar" routerLink="/quiz-detail/{{item.id}}">
+          <button mat-icon-button color="primary" matTooltip="Open quiz" routerLink="/quiz-detail/{{item.id}}">
             <mat-icon>visibility</mat-icon>
+          </button>
+
+          <button mat-icon-button color="primary" matTooltip="Delete quiz" (click)="deleteQuiz(item.id)">
+            <mat-icon>delete</mat-icon>
           </button>
         </mat-list-item>
         <mat-divider></mat-divider>

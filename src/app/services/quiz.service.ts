@@ -24,4 +24,8 @@ export class QuizService {
   insert(obj: any): Observable<any> {
     return this.http.post(this.baseUrl + '/insert', obj);
   }
+
+  delete(id: number): Observable<any> {
+    return this.http.delete(this.baseUrl + '/' + id);
+  }
 }

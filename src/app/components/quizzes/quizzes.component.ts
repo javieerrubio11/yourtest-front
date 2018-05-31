@@ -19,7 +19,8 @@ export class QuizzesComponent implements OnInit {
 
   constructor(
     private quizService: QuizService,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog,
+    public snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.getQuizzes();
@@ -42,6 +43,24 @@ export class QuizzesComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if(result)
         this.quizzes.push(result)
+    });
+  }
+
+  deleteQuiz(id): void {
+    this.quizService.delete(id)
+      .subscribe(data => {
+        this.quizzes = data;
+        this.openSnackBar('Quiz removed successfully', 'Close');
+      },
+      error => {
+        console.log(<any>error);
+      });
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 4000,
+      panelClass: 'green',
     });
   }
 
@@ -77,7 +96,7 @@ export class QuizInsertDialog implements OnInit {
   save() {
     this.quizService.insert(this.quiz)
       .subscribe(data => {
-        this.openSnackBar('Quiz saved successfully', 'Close')
+        this.openSnackBar('Quiz saved successfully', 'Close');
         this.dialogRef.close(data);
       },
       error => {
@@ -93,7 +112,7 @@ export class QuizInsertDialog implements OnInit {
 
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
-      duration: 3000,
+      duration: 4000,
       panelClass: 'green',
     });
   }
