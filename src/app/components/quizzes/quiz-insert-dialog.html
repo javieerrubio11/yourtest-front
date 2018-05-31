@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>New quiz</h2>
+
+<mat-dialog-content class="mw-400">
+  <form fxLayout="row wrap">
+
+    <mat-form-field fxFlex="100">
+      <input matInput name="name" [(ngModel)]="quiz.name" placeholder="Name" required>
+    </mat-form-field>
+
+    <br><br><br>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <div fxFlex></div>
+  <button mat-raised-button color="primary" (click)="save()" [disabled]="quiz.name == null || quiz.name == ''">Save</button>
+</mat-dialog-actions>

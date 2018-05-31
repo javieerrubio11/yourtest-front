@@ -26,7 +26,7 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { QuizzesComponent } from './components/quizzes/quizzes.component';
+import { QuizzesComponent, QuizInsertDialog } from './components/quizzes/quizzes.component';
 import { QuizDetailComponent, AnswerInsertDialog } from './components/quiz-detail/quiz-detail.component';
 import { LoginComponent } from './components/login/login.component';
 import { QuestionDetailComponent, QuestionInsertDialog } from './components/question-detail/question-detail.component';
@@ -39,6 +39,7 @@ import { QuestionDetailComponent, QuestionInsertDialog } from './components/ques
     QuizDetailComponent,
     HeaderComponent,
     FooterComponent,
+    QuizInsertDialog,
     AnswerInsertDialog,
     QuestionInsertDialog,
     LoginComponent,
@@ -66,6 +67,7 @@ import { QuestionDetailComponent, QuestionInsertDialog } from './components/ques
     }
   ],
   entryComponents: [
+    QuizInsertDialog,
     AnswerInsertDialog,
     QuestionInsertDialog,
   ],

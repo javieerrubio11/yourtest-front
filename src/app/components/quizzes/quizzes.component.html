@@ -5,8 +5,8 @@
     <div fxLayout="row">
       List of Quizzes ({{quizzes.length}})
       <div fxFlex></div>
-      <button mat-icon-button color="primary" matTooltip="Añadir nueva encuesta" matTooltipPosition="before">
-        <mat-icon aria-label="Nueva encuesta">add</mat-icon>
+      <button mat-icon-button color="primary" (click)="openDialogQuiz()" matTooltip="New quiz" matTooltipPosition="before">
+        <mat-icon aria-label="New quiz">add</mat-icon>
       </button>
     </div>
   </mat-card-title>
@@ -18,7 +18,7 @@
     <mat-list>
       <div *ngFor="let item of quizzes">
         <mat-list-item>
-          <span>{{item.name}} - {{item.owner.firstName}}</span>
+          <span>{{item.name}}</span>
 
           <div fxFlex></div>
 
