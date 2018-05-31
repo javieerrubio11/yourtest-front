@@ -2,8 +2,8 @@
 <mat-card class="margin-20">
 
   <mat-card-title>
-    <div fxLayout="row">
-      List of Questions ({{questions.length}})
+    <div fxLayout="row" *ngIf="quiz != null">
+      {{quiz.name}} ({{questions.length}})
       <div fxFlex></div>
 
       <button mat-icon-button [disabled]="allExpandState" color="primary" matTooltip="Visualizar todas las preguntas"
