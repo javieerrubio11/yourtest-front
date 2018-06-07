@@ -76,9 +76,10 @@ export class ExamComponent implements OnInit {
     let vm = this;
     let valid = true;
     this.questions.forEach(function(item) {
-      console.log(vm.responseQuestion[item.id]);
-      if(!vm.responseQuestion[item.id])
+      if(!vm.responseQuestion[item.id]) {
         valid = false;
+        return;
+      }
     })
     this.formValid = valid;
   }
