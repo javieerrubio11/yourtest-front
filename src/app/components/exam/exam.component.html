@@ -1,0 +1,56 @@
+
+<mat-card class="margin-20">
+
+  <mat-card-title>
+    <div fxLayout="row" *ngIf="quiz != null">
+      {{quiz.name}} ({{questions.length}})
+      <div fxFlex></div>
+
+    </div>
+  </mat-card-title>
+
+  <mat-divider></mat-divider>
+
+  <br>
+
+  <mat-card-content>
+
+    <div *ngFor="let question of questions; let i = index">
+      <span *ngIf="question.answers && question.answers.length > 0">
+        <h3>{{question.name}}</h3>
+
+        <mat-radio-group class="radio-group" [(ngModel)]="responseQuestion[question.id]" fxLayout="row wrap">
+          <div fxFlex="100" *ngFor="let answer of question.answers" class="radio-button">
+            <mat-radio-button [value]="answer.id" (click)="selectAnswer()"></mat-radio-button>
+            {{answer.name}}
+          </div>
+        </mat-radio-group>
+
+        <mat-divider *ngIf="i != questions.length - 1"></mat-divider>
+      </span>
+    </div>
+
+    <div *ngIf="questions.length < 1">
+      Any question...
+    </div>
+
+  </mat-card-content>
+
+  <mat-divider></mat-divider>
+
+  <mat-card-actions>
+    <div fxLayout="row">
+
+      <div fxFlex></div>
+
+      <button fxFlex fxFlex.xs="100" mat-raised-button color="primary" (click)="resolveExam()">
+        <mat-icon>send</mat-icon>
+        Resolve
+      </button>
+
+      <div fxFlex></div>
+
+    </div>
+  </mat-card-actions>
+
+</mat-card>

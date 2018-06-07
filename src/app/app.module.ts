@@ -30,6 +30,7 @@ import { QuizzesComponent, QuizInsertDialog } from './components/quizzes/quizzes
 import { QuizDetailComponent, AnswerInsertDialog } from './components/quiz-detail/quiz-detail.component';
 import { LoginComponent } from './components/login/login.component';
 import { QuestionDetailComponent, QuestionInsertDialog } from './components/question-detail/question-detail.component';
+import { ExamComponent } from './components/exam/exam.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { QuestionDetailComponent, QuestionInsertDialog } from './components/ques
     QuestionInsertDialog,
     LoginComponent,
     QuestionDetailComponent,
+    ExamComponent,
   ],
   imports: [
     BrowserModule,

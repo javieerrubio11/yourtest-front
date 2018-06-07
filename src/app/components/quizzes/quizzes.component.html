@@ -28,7 +28,11 @@
             <mat-icon>visibility</mat-icon>
           </button>
 
-          <button mat-icon-button color="primary" matTooltip="Delete quiz" (click)="deleteQuiz(item.id)">
+          <button mat-icon-button color="primary" matTooltip="New exam" routerLink="/exam/{{item.id}}">
+            <mat-icon>view_list</mat-icon>
+          </button>
+
+          <button mat-icon-button class="grey-text" matTooltip="Delete quiz" (click)="deleteQuiz(item.id)">
             <mat-icon>delete</mat-icon>
           </button>
         </mat-list-item>

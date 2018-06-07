@@ -17,6 +17,7 @@ import {
   MatDialogModule,
   MatFormFieldModule,
   MatSnackBarModule,
+  MatRadioModule,
 } from '@angular/material';
 
 /**
@@ -40,6 +41,7 @@ import {
     MatDialogModule,
     MatFormFieldModule,
     MatSnackBarModule,
+    MatRadioModule,
   ]
 })
 export class CustomMaterialModule {}
