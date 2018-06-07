@@ -19,9 +19,9 @@
       <span *ngIf="question.answers && question.answers.length > 0">
         <h3>{{question.name}}</h3>
 
-        <mat-radio-group class="radio-group" [(ngModel)]="responseQuestion[question.id]" fxLayout="row wrap">
+        <mat-radio-group class="radio-group" [(ngModel)]="responseQuestion[question.id]" fxLayout="row wrap" (change)="checkForm()">
           <div fxFlex="100" *ngFor="let answer of question.answers" class="radio-button">
-            <mat-radio-button [value]="answer.id" (click)="selectAnswer()"></mat-radio-button>
+            <mat-radio-button [value]="answer.id"></mat-radio-button>
             {{answer.name}}
           </div>
         </mat-radio-group>
@@ -43,7 +43,7 @@
 
       <div fxFlex></div>
 
-      <button fxFlex fxFlex.xs="100" mat-raised-button color="primary" (click)="resolveExam()">
+      <button fxFlex fxFlex.xs="100" mat-raised-button color="primary" (click)="resolveExam()" [disabled]="!formValid">
         <mat-icon>send</mat-icon>
         Resolve
       </button>

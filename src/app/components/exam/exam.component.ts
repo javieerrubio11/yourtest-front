@@ -19,6 +19,7 @@ export class ExamComponent implements OnInit {
   questions: Question[] = [];
   quiz: Quiz = null;
   responseQuestion = [];
+  formValid = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -61,18 +62,29 @@ export class ExamComponent implements OnInit {
       });
   }
 
-    getAnswers(item): void {
-      this.answerService.getByQuestionId(item.id)
-        .subscribe(data => {
-          item.answers = data;
-        },
-        error => {
-          console.log(<any>error);
-        });
-    }
+  getAnswers(item): void {
+    this.answerService.getByQuestionId(item.id)
+      .subscribe(data => {
+        item.answers = data;
+      },
+      error => {
+        console.log(<any>error);
+      });
+  }
 
-    selectAnswer(): void {
-      console.log(this.responseQuestion)
-    }
+  checkForm(): void {
+    let vm = this;
+    let valid = true;
+    this.questions.forEach(function(item) {
+      console.log(vm.responseQuestion[item.id]);
+      if(!vm.responseQuestion[item.id])
+        valid = false;
+    })
+    this.formValid = valid;
+  }
+
+  resolveExam(): void {
+    console.log(this.responseQuestion)
+  }
 
 }
