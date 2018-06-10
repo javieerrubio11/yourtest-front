@@ -18,7 +18,11 @@ import { ActivatedRoute } from '@angular/router';
 export class ExamComponent implements OnInit {
   questions: Question[] = [];
   quiz: Quiz = null;
+
   responseQuestion = [];
+  examResolved = []:
+  correctAnswer = 0:
+  formResolved = false;
   formValid = false;
 
   constructor(
@@ -86,6 +90,37 @@ export class ExamComponent implements OnInit {
 
   resolveExam(): void {
     console.log(this.responseQuestion)
+    let vm = this;
+
+    vm.correctAnswer = 0;
+    vm.formResolved = true;
+    this.questions.forEach(function(item) {
+      let answerSelected = vm.responseQuestion[item.id];
+      let answerSelectedObject = vm.searchById(item.answers, answerSelected);
+
+      let questionResolved = {};
+      questionResolved['correct'] = answerSelectedObject.correct;
+      questionResolved['answer'] = answerSelected;
+      vm.examResolved[item.id] = questionResolved;
+
+      if(answerSelectedObject.correct)
+        vm.correctAnswer++;
+
+      console.log(item, answerSelected, answerSelectedObject, questionResolved);
+    })
+
+  }
+
+  searchQuestionById(id): Question {
+    return this.questions.find(function(element) {
+      return element.id == id;
+    });
+  }
+
+  searchById(list, id): any {
+    return list.find(function(element) {
+      return element.id == id;
+    });
   }
 
 }

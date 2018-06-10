@@ -16,11 +16,17 @@
   <mat-card-content>
 
     <div *ngFor="let question of questions; let i = index">
-      <span *ngIf="question.answers && question.answers.length > 0">
-        <h3>{{question.name}}</h3>
 
-        <mat-radio-group class="radio-group" [(ngModel)]="responseQuestion[question.id]" fxLayout="row wrap" (change)="checkForm()">
-          <div fxFlex="100" *ngFor="let answer of question.answers" class="radio-button">
+      <span fxFlex *ngIf="question.answers && question.answers.length > 0">
+        <h2 fxLayout="row">
+          <span fxFlex="1" [ngClass]="[ !formResolved ? '' : examResolved[question.id].correct ? 'green' : 'red' ]"></span>
+          <span fxFlex="1"></span>
+          <p fxFlex>{{question.name}}</p>
+        </h2>
+
+        <mat-radio-group class="radio-group" [(ngModel)]="responseQuestion[question.id]" fxLayout="row wrap" (change)="checkForm()" [disabled]="formResolved">
+          <div fxFlex="100" *ngFor="let answer of question.answers" class="radio-button"
+          [ngClass]=" (examResolved[question.id] != null && answer.correct) ? 'green-text' : '' ">
             <mat-radio-button [value]="answer.id"></mat-radio-button>
             {{answer.name}}
           </div>
@@ -34,6 +40,20 @@
       Any question...
     </div>
 
+    <div fxLayout="row" *ngIf="formResolved" [ngClass]="(correctAnswer * 100 / questions.length > 50) ? 'green-text' : 'red-text'">
+      <mat-divider></mat-divider>
+      <br>
+      <br>
+
+      <span flex></span>
+
+      <h2 fxFlex fxFlex.xs="100">Correct Answer: {{correctAnswer}}</h2>
+
+      <h2 fxFlex fxFlex.xs="100">{{correctAnswer * 100 / questions.length}}%</h2>
+
+      <span flex></span>
+    </div>
+
   </mat-card-content>
 
   <mat-divider></mat-divider>
@@ -43,7 +63,7 @@
 
       <div fxFlex></div>
 
-      <button fxFlex fxFlex.xs="100" mat-raised-button color="primary" (click)="resolveExam()" [disabled]="!formValid">
+      <button fxFlex fxFlex.xs="100" mat-raised-button color="primary" (click)="resolveExam()" [disabled]="!formValid || formResolved">
         <mat-icon>send</mat-icon>
         Resolve
       </button>
