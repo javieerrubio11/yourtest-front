@@ -18,11 +18,11 @@
     <div *ngFor="let question of questions; let i = index">
 
       <span fxFlex *ngIf="question.answers && question.answers.length > 0">
-        <h2 fxLayout="row">
+        <h3 fxLayout="row">
           <span fxFlex="1" [ngClass]="[ !formResolved ? '' : examResolved[question.id].correct ? 'green' : 'red' ]"></span>
           <span fxFlex="1"></span>
           <p fxFlex>{{question.name}}</p>
-        </h2>
+        </h3>
 
         <mat-radio-group class="radio-group" [(ngModel)]="responseQuestion[question.id]" fxLayout="row wrap" (change)="checkForm()" [disabled]="formResolved">
           <div fxFlex="100" *ngFor="let answer of question.answers" class="radio-button"
