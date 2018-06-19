@@ -20,8 +20,8 @@ export class ExamComponent implements OnInit {
   quiz: Quiz = null;
 
   responseQuestion = [];
-  examResolved = []:
-  correctAnswer = 0:
+  examResolved = [];
+  correctAnswer = 0;
   formResolved = false;
   formValid = false;
 

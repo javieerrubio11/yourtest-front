@@ -15,11 +15,14 @@ import { QuizService } from './services/quiz.service';
 import { QuestionService } from './services/question.service';
 import { AnswerService } from './services/answer.service';
 import { AuthService } from './services/auth.service';
+import { AuthGuardService } from './services/auth-guard.service';
+import { RoleGuardService } from './services/role-guard.service';
 
 // Security
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { Interceptor } from "./core/app.interceptor";
 import { TokenStorage } from "./core/token.storage";
+import { TokenJwtHelper } from "./core/token.jwthelper";
 
 // Components
 import { AppComponent } from './app.component';
@@ -61,7 +64,9 @@ import { ExamComponent } from './components/exam/exam.component';
     QuestionService,
     AnswerService,
     AuthService,
+    AuthGuardService,
     TokenStorage,
+    TokenJwtHelper,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: Interceptor,
