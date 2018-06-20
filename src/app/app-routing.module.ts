@@ -11,12 +11,14 @@ import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 import { RoleGuardService as RoleGuard } from './services/role-guard.service';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'quizzes', component: QuizzesComponent, canActivate: [AuthGuard] },
-  { path: 'quiz-detail/:id', component: QuizDetailComponent },
-  { path: 'exam/:id', component: ExamComponent },
   { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full', canActivate: [AuthGuard] },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+
+  { path: 'quizzes', component: QuizzesComponent, canActivate: [AuthGuard] },
+  { path: 'quiz-detail/:id', component: QuizDetailComponent, canActivate: [AuthGuard] },
+
+  { path: 'exam/:id', component: ExamComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
