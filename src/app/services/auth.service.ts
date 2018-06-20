@@ -33,7 +33,14 @@ export class AuthService {
 
   public isAuthenticated(): boolean {
     const token = this.tokenStorage.getToken();
-    return !this.tokenJwtHelper.isTokenExpired(token);
+    const tokenExpired = this.tokenJwtHelper.isTokenExpired(token);
+
+    if(tokenExpired) {
+      this.clearActiveUser();
+      this.tokenStorage.signOut();
+    }
+
+    return !tokenExpired;
   }
 
 }
