@@ -26,4 +26,19 @@ export class AuthService {
     });
   }
 
+<<<<<<< Updated upstream
+=======
+  public isAuthenticated(): boolean {
+    const token = this.tokenStorage.getToken();
+    const tokenExpired = this.tokenJwtHelper.isTokenExpired(token);
+
+    if(tokenExpired) {
+      this.clearActiveUser();
+      this.tokenStorage.signOut();
+    }
+
+    return !tokenExpired;
+  }
+
+>>>>>>> Stashed changes
 }

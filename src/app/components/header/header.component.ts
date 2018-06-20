@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/user';
 import { TokenStorage } from '../../core/token.storage';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private location: Location,
     private authService: AuthService,
-    private token: TokenStorage) { }
+    private token: TokenStorage,
+    public router: Router) { }
 
   ngOnInit() {
     this.activeUser = this.authService.activeUser;
@@ -29,6 +31,7 @@ export class HeaderComponent implements OnInit {
   signOut() {
     this.token.signOut();
     this.authService.clearActiveUser();
+    this.router.navigate(['login']);
   }
 
   back() {
