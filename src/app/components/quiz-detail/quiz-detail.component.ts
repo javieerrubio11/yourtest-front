@@ -126,6 +126,7 @@ export class QuizDetailComponent implements OnInit {
 @Component({
   selector: 'answer-insert-dialog',
   templateUrl: 'answer-insert-dialog.html',
+  styleUrls: ['./quiz-detail.component.css'],
 })
 export class AnswerInsertDialog implements OnInit {
   question: Question = null;

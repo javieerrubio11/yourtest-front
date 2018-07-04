@@ -24,6 +24,9 @@ import { Interceptor } from "./core/app.interceptor";
 import { TokenStorage } from "./core/token.storage";
 import { TokenJwtHelper } from "./core/token.jwthelper";
 
+// Pipes
+import { RandomOrderPipe } from './pipes/random-order.pipe';
+
 // Components
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -49,6 +52,8 @@ import { ExamComponent } from './components/exam/exam.component';
     LoginComponent,
     QuestionDetailComponent,
     ExamComponent,
+
+    RandomOrderPipe,
   ],
   imports: [
     BrowserModule,

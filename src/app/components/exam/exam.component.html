@@ -15,7 +15,7 @@
 
   <mat-card-content>
 
-    <div *ngFor="let question of questions; let i = index">
+    <div *ngFor="let question of questions | randomOrder; let i = index">
 
       <span fxFlex *ngIf="question.answers && question.answers.length > 0">
         <h3 fxLayout="row" [ngClass]="[ !formResolved ? '' : examResolved[question.id].correct ? '' : 'red lighten-5' ]">
@@ -25,7 +25,7 @@
         </h3>
 
         <mat-radio-group class="radio-group" [(ngModel)]="responseQuestion[question.id]" fxLayout="row wrap" (change)="checkForm()" [disabled]="formResolved">
-          <div fxFlex="100" *ngFor="let answer of question.answers; let j = index" class="radio-button"
+          <div fxFlex="100" *ngFor="let answer of question.answers | randomOrder; let j = index" class="radio-button"
           [ngClass]=" (examResolved[question.id] != null && answer.correct) ? 'green-text text-darken-3 fwb' : '' ">
             <mat-radio-button [value]="answer.id" color="primary"></mat-radio-button>
             {{convertToNumberingScheme(j+1)}} - {{answer.name}}

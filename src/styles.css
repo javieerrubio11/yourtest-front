@@ -20,3 +20,7 @@
 .fwb {
   font-weight: bold;
 }
+
+.dialog-size {
+  min-width: 70vw;
+}

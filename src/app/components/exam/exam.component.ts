@@ -130,6 +130,12 @@ export class ExamComponent implements OnInit {
    return letters;
  }
 
+ randomOrder(array): any {
+   return array.sort(function() {
+     return  0.5 - Math.random();
+   });
+ }
+
   searchById(list, id): any {
     return list.find(function(element) {
       return element.id == id;
