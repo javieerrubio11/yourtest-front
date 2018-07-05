@@ -1,3 +1,38 @@
-<p>
-  signin works!
-</p>
+<div class="singin-container">
+  <div class="singin-item animated flipInY">
+    <mat-card>
+      <mat-card-title>
+        <div fxLayout="row" fxLayout.xs="column">
+          Sign In
+          <div fxFlex></div>
+          <button mat-button routerLink="/login" class="green-text">Login</button>
+        </div>
+      </mat-card-title>
+
+      <mat-divider></mat-divider>
+
+      <mat-card-content>
+        <br>
+
+        <form fxLayout="column">
+          <mat-form-field fxFlex="100">
+            <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+          </mat-form-field>
+          <mat-form-field fxFlex="100">
+            <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+
+      <mat-divider></mat-divider>
+
+      <mat-card-actions>
+        <div fxLayout="row" fxLayout.xs="column">
+          <button mat-button (click)="reset()" color="primary"><mat-icon aria-label="New question">clear</mat-icon> Reset</button>
+          <div fxFlex></div>
+          <button mat-raised-button (click)="signin()" color="primary"><mat-icon aria-label="New question">send</mat-icon> Send</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

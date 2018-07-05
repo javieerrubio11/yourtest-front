@@ -41,6 +41,8 @@ import { SigninComponent } from './components/signin/signin.component';
 
 @NgModule({
   declarations: [
+    RandomOrderPipe,
+
     AppComponent,
     DashboardComponent,
     QuizzesComponent,
@@ -53,9 +55,6 @@ import { SigninComponent } from './components/signin/signin.component';
     LoginComponent,
     QuestionDetailComponent,
     ExamComponent,
-
-    RandomOrderPipe,
-
     SigninComponent,
   ],
   imports: [

@@ -1,11 +1,11 @@
 <div class="login-container">
-  <div class="login-item">
+  <div class="login-item animated flipInY">
     <mat-card>
       <mat-card-title>
         <div fxLayout="row" fxLayout.xs="column">
           Login
           <div fxFlex></div>
-          <button mat-button (click)="register()" class="green white-text">Sign In</button>
+          <button mat-button routerLink="/singin" class="green-text">Sign In</button>
         </div>
       </mat-card-title>
 
@@ -24,11 +24,13 @@
         </form>
       </mat-card-content>
 
+      <mat-divider></mat-divider>
+
       <mat-card-actions>
         <div fxLayout="row" fxLayout.xs="column">
-          <button mat-button (click)="reset()" color="primary">Reset</button>
+          <button mat-button (click)="reset()" color="primary"><mat-icon aria-label="New question">clear</mat-icon> Reset</button>
           <div fxFlex></div>
-          <button mat-raised-button (click)="login()" color="primary">Login</button>
+          <button mat-raised-button (click)="login()" color="primary"><mat-icon aria-label="New question">send</mat-icon> Send</button>
         </div>
       </mat-card-actions>
     </mat-card>

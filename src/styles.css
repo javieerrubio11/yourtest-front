@@ -3,6 +3,7 @@
 @import 'material-icons/iconfont/material-icons.css';
 @import "./assets/css/main.css";
 @import "./assets/css/material-colors.min.css";
+@import "animate.css/animate.css";
 
 .line-divider-header {
   border-bottom: 1px solid;
