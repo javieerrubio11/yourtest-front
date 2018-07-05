@@ -1,0 +1,24 @@
+
+.login-container {
+  background-color: rgb(0,0,0,0.75);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
+.login-item {
+  width: 40%;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+}
+
+
+@media (max-width: 600px) {
+  .login-item {
+    width: 90%;
+    left: 5%;
+  }
+}

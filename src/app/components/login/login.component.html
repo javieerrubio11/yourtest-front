@@ -1,12 +1,11 @@
-
-<div fxLayout="row" fxLayout.xs="column">
-  <div fxFlex="30" fxFlex.sm="20"></div>
-
-  <div fxFlex="40" fxFlex.sm="60" fxFlex.xs="100">
-    <mat-card class="margin-20">
+<div class="login-container">
+  <div class="login-item">
+    <mat-card>
       <mat-card-title>
         <div fxLayout="row" fxLayout.xs="column">
           Login
+          <div fxFlex></div>
+          <button mat-button (click)="register()" class="green white-text">Sign In</button>
         </div>
       </mat-card-title>
 
@@ -34,6 +33,4 @@
       </mat-card-actions>
     </mat-card>
   </div>
-
-  <div fxFlex="30" fxFlex.sm="20"></div>
 </div>

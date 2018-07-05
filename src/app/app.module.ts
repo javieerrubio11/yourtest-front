@@ -37,6 +37,7 @@ import { QuizDetailComponent, AnswerInsertDialog } from './components/quiz-detai
 import { LoginComponent } from './components/login/login.component';
 import { QuestionDetailComponent, QuestionInsertDialog } from './components/question-detail/question-detail.component';
 import { ExamComponent } from './components/exam/exam.component';
+import { SigninComponent } from './components/signin/signin.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,8 @@ import { ExamComponent } from './components/exam/exam.component';
     ExamComponent,
 
     RandomOrderPipe,
+
+    SigninComponent,
   ],
   imports: [
     BrowserModule,
